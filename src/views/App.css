@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .App {
   text-align: center;
 }
@@ -93,4 +95,5 @@ input {
   to {
     transform: rotate(360deg);
   }
+  font-family: "Press Start 2P", cursive;
 }

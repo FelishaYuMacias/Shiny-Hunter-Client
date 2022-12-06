@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 // import { Button } from 'react-bootstrap';
 import axios from "axios";
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Nav from '../components/Nav'
+import Home from './Home'
 
 const App = () => {
   const [pokemon, setPokemon] = useState("pikachu");
