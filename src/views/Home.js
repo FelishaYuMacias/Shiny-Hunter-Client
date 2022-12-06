@@ -1,6 +1,8 @@
+import Search from "../components/Search";
+
 const Home = () => {
   return (
-    <h1>Welcome trainer.</h1>
+    <Search />
   )
 }
 
