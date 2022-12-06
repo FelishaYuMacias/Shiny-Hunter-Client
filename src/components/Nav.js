@@ -7,8 +7,8 @@ const Nav = () => {
       <Link as={RouterLink} to='/'>
         <Image boxSize='50px' src='/img/pokeball.png' alt='pokeball' />
       </Link>
-      <Link as={RouterLink} to='/users'>View all users</Link>
-      <Link as={RouterLink} to='/recent'>View recent hunts</Link>
+      <Link as={RouterLink} to='/users'>Users</Link>
+      <Link as={RouterLink} to='/recent'>Recent Hunts</Link>
       <Link as={RouterLink} to='/login'>
         <button type='button' className='nes-btn is-primary'>Login</button>
       </Link>
