@@ -31,13 +31,8 @@ function App() {
     }
   }, [])
 
-<<<<<<< HEAD
-  const handleLoginSubmit = user=>{
-    API.login(user).then(data=>{
-=======
   const handleLoginSubmit = userObj => {
     API.login(userObj).then(data => {
->>>>>>> origin
       console.log(data);
       if (data.token) {
         setUserId(data.user.id)
@@ -75,17 +70,10 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-<<<<<<< HEAD
-          <Route path="/login" element={<Login
-           handleLoginSubmit={handleLoginSubmit}
-            />}/>
-          <Route path="/" element={<Home/>} />
-=======
           <Route path="/" element={<Home />} />
           <Route path="/hunts" element={<Hunts />} />
           <Route path="/login" element={<Login />}
             handleLoginSubmit={handleLoginSubmit} />
->>>>>>> origin
         </Routes>
       </Router>
     </div>
