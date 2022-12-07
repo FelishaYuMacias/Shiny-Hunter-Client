@@ -1,5 +1,5 @@
 import axios from 'axios'
-const URL_PREFIX = 'https://localhost:3001' || 'https://herokuapp.com'
+const URL_PREFIX = 'http://localhost:3001'
 
 const API = {
   login: (user) => {
@@ -19,9 +19,12 @@ const API = {
       }
     })
   },
+  getHunts: () => {
+    return axios.get(`${URL_PREFIX}/api/hunts`).then(res => res.data)
+  },
   getUserHunts: (userId) => {
-    return axios.get(`${URL_PREFIX}/api/hunts`, {
-      params: { __v: userId }
+    return axios.get(`${URL_PREFIX}/api/hunts/`, {
+      params: { _id: userId }
     })
   },
   createHunt: (hunt, token) => {
