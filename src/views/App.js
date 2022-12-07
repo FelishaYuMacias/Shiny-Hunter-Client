@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Login from './login';
 import Home from './Home'
+import Hunts from '../components/Hunts';
 import {useEffect, useState} from "react";
 import API from "../util/API";
 

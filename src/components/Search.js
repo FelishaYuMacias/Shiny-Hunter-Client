@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import axios from 'axios'
+import { useState } from 'react';
+import axios from 'axios';
 
 const Search = () => {
-  const [pokemon, setPokemon] = useState("pikachu");
+  const [pokemon, setPokemon] = useState(" ");
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("")
-
+  const [loading, setLoading] = useState(false)
+  
   const getPokemon = async () => {
     const toArray = [];
     try {
@@ -19,21 +20,21 @@ const Search = () => {
       console.log(e)
     }
   }
-
+  
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     getPokemon()
   }
 
-
   return (
     <>
       <form onSubmit={handleSubmit}>
         <label>
+          <button>Search</button>
           <input
             type="text"
             onChange={handleChange}
@@ -44,7 +45,12 @@ const Search = () => {
       {pokemonData.map((data) => {
         return (
           <div className='container'>
-            <img src={data.sprites["front_shiny"]} />
+            {!loading && pokemon ? (
+               <div>
+            </div>
+            ): null}
+            <h1>{data.species.name}</h1>
+            <img src={data.sprites["front_shiny"]} alt="shiny" />
             <div className='divTable'>
               <div className='divTableBody'>
                 <div className='divTableRow'>
@@ -52,7 +58,7 @@ const Search = () => {
                   <div className='divTableCell'>{pokemonType}</div>
                 </div>
                 <div className='divTableRow'>
-                  <div className='divTableCell'>Form</div>
+                  <div className='divTableCell'>Height</div>
                   <div className='divTableCell'>
                     {" "}
                     {Math.round(data.height * 3.9)} "
@@ -79,5 +85,6 @@ const Search = () => {
     </>
   )
 }
+
 
 export default Search
