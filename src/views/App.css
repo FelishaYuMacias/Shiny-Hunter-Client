@@ -55,9 +55,15 @@ img {
 }
 
 input {
-  box-sizing: border-box;
-  font-size: 2rem;
+  margin: 0.5rem 0;
   padding: 1rem;
-  display: block;
-  margin: 2rem auto;
+  border-radius: 10px;
+}
+
+button {
+  border:none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  color:red;
 }
