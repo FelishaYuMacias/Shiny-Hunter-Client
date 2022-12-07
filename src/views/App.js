@@ -31,8 +31,8 @@ function App() {
     }
   },[])
 
-  const handleLoginSubmit = userObj=>{
-    API.login(userObj).then(data=>{
+  const handleLoginSubmit = user=>{
+    API.login(user).then(data=>{
       console.log(data);
       if(data.token){
         setUserId(data.user.id)
@@ -68,8 +68,9 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/login" element={<Login/>}
-           handleLoginSubmit={handleLoginSubmit} />
+          <Route path="/login" element={<Login
+           handleLoginSubmit={handleLoginSubmit}
+            />}/>
           <Route path="/" element={<Home/>} />
         </Routes>
       </Router>
