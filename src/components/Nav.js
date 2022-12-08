@@ -1,20 +1,24 @@
-import { Link, Image } from '@chakra-ui/react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Image } from '@chakra-ui/react'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Nav = () => {
+function Navbar(props) {
+  const navigate = useNavigate()
+  const logoutFunc = () => {
+    props.handleLogout()
+    navigate("/login")
+  }
+
   return (
     <nav>
-      <Link as={RouterLink} to='/'>
+      <Link to='/'>
         <Image boxSize='50px' src='/img/pokeball.png' alt='pokeball' />
       </Link>
-      <Link as={RouterLink} to='/users'>Users</Link>
-      <Link as={RouterLink} to='/hunts'>Hunts</Link>
-      <Link as={RouterLink} to='/pokemon'>Pokemon</Link>
-      <Link as={RouterLink} to='/login'>
-        <button type='button' className='nes-btn is-primary'>Login</button>
-      </Link>
+      <Link to='/users'>Users</Link>
+      <Link to='/hunts'>Hunts</Link>
+      {props.isLoggedIn ? <Link to="/profile">Profile</Link> : null}
+      {props.isLoggedIn ? <button onClick={logoutFunc}>Logout</button> : <Link to="/login"><button type='button' className='nes-btn is-primary'>Login</button></Link>}
     </nav>
   )
 }
 
-export default Nav
+export default Navbar
