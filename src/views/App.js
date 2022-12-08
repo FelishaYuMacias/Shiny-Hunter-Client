@@ -4,16 +4,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import API from '../util/API'
 import Nav from '../components/Nav'
 import Home from './Home'
-import Login from './login'
+import Login from './Login'
 import Hunts from './Hunts'
-import Profile from './profile';
+import Profile from './Profile';
 
 function App() {
   const [userId, setUserId] = useState(0)
   const [username, setUsername] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
-  
+
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -74,21 +74,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hunts" element={<Hunts />} />
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login
             isLoggedIn={isLoggedIn}
             handleLoginSubmit={handleLoginSubmit}
             handleSignupSubmit={handleSignupSubmit}
-          />}/>
-          <Route path="/profile" element={<Profile 
-          isLoggedIn={isLoggedIn} 
-          userId={userId} 
-          token={token} 
-          username={username}
-          setIsLoggedIn={setIsLoggedIn}
-          setToken={setToken}
-          setUserId={setUserId}
-          />}/>
+          />} />
+          <Route path="/profile" element={<Profile
+            isLoggedIn={isLoggedIn}
+            userId={userId}
+            token={token}
+            username={username}
+            setIsLoggedIn={setIsLoggedIn}
+            setToken={setToken}
+            setUserId={setUserId}
+          />} />
         </Routes>
       </Router>
     </div>

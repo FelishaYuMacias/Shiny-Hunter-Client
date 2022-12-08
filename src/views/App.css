@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+nav > * {
+  margin: 0 20px;
+}
+
 .divTable {
   display: table;
   max-width: 20em;
@@ -61,9 +65,9 @@ input {
 }
 
 button {
-  border:none;
+  border: none;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  color:red;
+  color: red;
 }
