@@ -7,7 +7,7 @@ const Card = (props) => {
 
   useEffect(() => {
     PokeAPI.getSprite(props.pokemon).then(res => {
-      setSprite(res.sprites["front_shiny"])
+      setSprite(res)
     })
   }, [])
 
