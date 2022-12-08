@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import API from "../util/API"
+import Hunts from '../components/Hunt';
+import Card from "../components/Card"
 
 export default function Profile(props) {
   const navigate = useNavigate();
@@ -28,6 +30,8 @@ export default function Profile(props) {
       navigate("/login")
     }
   }, [])
+  
+
   return (
     <>
       {
@@ -39,6 +43,7 @@ export default function Profile(props) {
           <h1>Loading....</h1>
         )
       }
+       <Card pokemon={data.pokemon.species} />
     </>
   )
 }

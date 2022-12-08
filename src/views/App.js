@@ -24,7 +24,7 @@ function App() {
           console.log(data)
           setToken(storedToken)
           setIsLoggedIn(true)
-          setUserId(data.user._id)
+          setUserId(data.user.id)
           setUsername(data.user.username)
         }
       })
@@ -58,8 +58,10 @@ function App() {
       }
     })
   }
-
-  const handleLogout = () => {
+console.log("login with this token")
+console.log(localStorage.getItem("token"))
+  
+const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     setUserId(0);

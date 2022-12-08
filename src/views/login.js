@@ -1,17 +1,24 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 export default function Login(props) {
     const [loginUsername, setLoginUsername] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     const [signupUsername, setSignupUsername] = useState("")
     const [signupPassword, setSignupPassword] = useState("")
+
+    let history = useNavigate();
     
+    const token = localStorage.getItem("token")
     const loginHandle=e=>{
       e.preventDefault();
       props.handleLoginSubmit({
         username:loginUsername,
         password:loginPassword
       })
+      if (token === true){
+        history.push("/")
+      }
     }
     const signupHandle=e=>{
         e.preventDefault();
