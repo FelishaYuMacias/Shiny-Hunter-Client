@@ -6,7 +6,8 @@ import Nav from '../components/Nav'
 import Home from './Home'
 import Login from './Login'
 import Hunts from './Hunts'
-import Profile from './Profile';
+import Profile from './Profile'
+import Users from './Users';
 
 function App() {
   const [userId, setUserId] = useState(0)
@@ -75,7 +76,7 @@ const handleLogout = () => {
         <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/users" />
+          <Route path="/users" element={<Users />}/>
           <Route path="/hunts" element={<Hunts />} />
           <Route path="/login" element={<Login
             isLoggedIn={isLoggedIn}
