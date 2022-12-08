@@ -2,23 +2,32 @@ import axios from 'axios'
 const URL_PREFIX = 'http://localhost:3001'
 
 const API = {
-  login: (user) => {
-    return axios.post(`${URL_PREFIX}/api/users/login`, {
-      user
-    })
-  },
-  signup: (user) => {
-    return axios.post(`${URL_PREFIX}/api/users/signup`, {
-      user
-    })
-  },
-  getUserFromToken: (token) => {
-    return axios.get(`${URL_PREFIX}/api/users/getuserfromtoken`, {
-      headers: {
-        "Authorization": `Bearer ${token}`
+  login: (userObj)=>{
+    return fetch(`${URL_PREFIX}/api/users/login`,{
+        method:"POST",
+        body:JSON.stringify(userObj),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    }).then(res=>res.json())
+},
+signup: (userObj)=>{
+  return fetch(`${URL_PREFIX}/api/users/signup`,{
+      method:"POST",
+      body:JSON.stringify(userObj),
+      headers:{
+          "Content-Type":"application/json"
       }
-    })
+  }).then(res=>res.json())
   },
+  getUserFromToken:(token)=>{
+    return fetch(`${URL_PREFIX}/api/users/getuserfromtoken`,{
+        method:"GET",
+        headers:{
+            "Authorization":`Bearer ${token}`
+        }
+    }).then(res=>res.json())
+},
   getHunts: () => {
     return axios.get(`${URL_PREFIX}/api/hunts`).then(res => res.data)
   },
