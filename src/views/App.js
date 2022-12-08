@@ -73,8 +73,8 @@ function App() {
         <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/users" />
           <Route path="/hunts" element={<Hunts />} />
-          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login
             isLoggedIn={isLoggedIn}
             handleLoginSubmit={handleLoginSubmit}
