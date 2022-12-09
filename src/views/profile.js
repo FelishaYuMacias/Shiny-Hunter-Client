@@ -1,16 +1,10 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import API from "../util/API"
-import Hunts from '../components/Hunt';
-import Card from "../components/Card"
 
-export default function Profile(props) {
+
+ function Profile(props) {
   const navigate = useNavigate();
-  // useEffect(()=>{
-  //     if(!props.isLoggedIn){
-  //         navigate("/login")
-  //     }
-  // },[])
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
     if (storedToken) {
@@ -29,7 +23,7 @@ export default function Profile(props) {
       console.log('no stored token')
       navigate("/login")
     }
-  }, [])
+  }, [props, navigate]);
   
 
   return (
@@ -43,7 +37,7 @@ export default function Profile(props) {
           <h1>Loading....</h1>
         )
       }
-       <Card pokemon={data.pokemon.species} />
     </>
   )
 }
+export default Profile
