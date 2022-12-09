@@ -7,7 +7,6 @@ function Hunts() {
 
   const addHuntsItem = (item) => {
     console.log(
-      ' ~ file: Hunts.js ~ line 10 ~ addHuntsItem ~ item',
       item
     );
 
@@ -21,7 +20,7 @@ function Hunts() {
     setHunts(newHunts);
   };
 
-  const completeHunts = (id) => {
+  const completeHuntsItem = (id) => {
    
     let updatedHunts = hunts.map((item) => {
       if (item.id === id) {
