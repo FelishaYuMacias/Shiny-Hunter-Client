@@ -11,25 +11,16 @@ const API = {
             "Content-Type":"application/json"
         }
     }).then(res=>res.json())
-<<<<<<< HEAD
   },
-=======
-},
->>>>>>> e567f3b3eb4e7f3acc6fa58370309d6306037563
-  signup: async (userObj) => {
-    return await axios.post(`${URL_PREFIX}/api/users/signup`, {
-      userObj
-    }).then(res => res.json())
+  signup: (userObj)=>{
+        return fetch(`${URL_PREFIX}/api/users/signup`,{
+            method:"POST",
+            body:JSON.stringify(userObj),
+            headers:{
+                "Content-Type":"application/json"
+            }
+        }).then(res=>res.json())
   },
-<<<<<<< HEAD
-  getUserFromToken: async (token) => {
-    return await axios.get(`${URL_PREFIX}/api/users/getuserfromtoken`, {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    }).then(res=>res.json())
-  },
-=======
   getUserFromToken:(token)=>{
     return fetch(`${URL_PREFIX}/api/users/getuserfromtoken`,{
         method:"GET",
@@ -38,7 +29,6 @@ const API = {
         }
     }).then(res=>res.json())
 },
->>>>>>> e567f3b3eb4e7f3acc6fa58370309d6306037563
   getHunts: async () => {
     return axios.get(`${URL_PREFIX}/api/hunts`).then(res => res.data)
   },

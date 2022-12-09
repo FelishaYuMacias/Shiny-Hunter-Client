@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import Huntform from './Huntform';
-<<<<<<< HEAD
-=======
 import Hunt from './Hunt';
->>>>>>> e567f3b3eb4e7f3acc6fa58370309d6306037563
 
 function Hunts() {
   const [hunts, setHunts] = useState([]);
