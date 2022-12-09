@@ -6,7 +6,8 @@ import Nav from '../components/Nav'
 import Home from './Home'
 import Login from './Login'
 import Hunts from './Hunts'
-import Profile from './Profile';
+import Profile from './Profile'
+import Game from './Game'
 
 function App() {
   const [userId, setUserId] = useState(0)
@@ -89,6 +90,7 @@ function App() {
             setToken={setToken}
             setUserId={setUserId}
           />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </Router>
     </div>
