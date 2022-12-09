@@ -8,6 +8,7 @@ import Login from './Login'
 import Hunts from './Hunts'
 import Profile from './Profile'
 import Game from './Game'
+import Users from './Users';
 
 function App() {
   const [userId, setUserId] = useState(0)
@@ -74,7 +75,7 @@ function App() {
         <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/users" />
+          <Route path="/users" element={<Users />} />
           <Route path="/hunts" element={<Hunts />} />
           <Route path="/login" element={<Login
             isLoggedIn={isLoggedIn}

@@ -1,17 +1,16 @@
-import '../engine/main'
+import Canvas from '../game/Canvas'
+
+const draw = (ctx) => {
+  const image = new Image()
+  image.src = '/img/map.png'
+  image.onload = () => {
+    ctx.drawImage(image, 0, 0)
+  }
+}
 
 const Game = () => {
-  const style = {
-    width: 1024,
-    height: 768,
-    background: 'white',
-    border: '1px solid black'
-  }
-
   return (
-    <div id="game-canvas">
-      <canvas id="gameWorld" style={style} tabIndex="0" autoFocus />
-    </div>
+    <Canvas draw={draw} width={1024} height={768} />
   )
 }
 
