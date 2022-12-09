@@ -10,9 +10,10 @@ const Card = (props) => {
       setSprite(res)
     })
   }, [])
-
+  
   return (
-    <img src={sprite} alt="shiny" />
+    <img src={sprite} alt="shiny"
+    />
   )
 }
 
