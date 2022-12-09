@@ -11,8 +11,10 @@ export default function Profile(props,data) {
     if(storedToken){
       // console.log(storedToken)
       API.getUserFromToken(storedToken).then(data=>{
-        console.log(data)
-        // console.log(props)
+        // console.log(data)
+        console.log(props)
+        console.log(`user id is ${props.userId}`)
+        console.log(`user token is ${props.token}`)
         if(data.user){
               props.setToken(storedToken)
               props.setIsLoggedIn(true)
@@ -36,8 +38,8 @@ export default function Profile(props,data) {
         <div className="Profile">
         <h1>Welcome {props.username}!</h1>
         {/* <MyHunts userId={props.id} token={props.token}/> */}
-        {/* <Hunts userId={props.id} token={props.token}/> */}
-        {/* <p>{data.user._id}</p> */}
+        {/* <Hunts userId={props.userId} token={props.token}/> */}
+        {/* <p>{props.setUserId.userId}</p> */}
         </div>
         ):(
             <h1>Loading....</h1>
