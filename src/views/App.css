@@ -71,3 +71,34 @@ button {
   border-radius: 10px;
   color: red;
 }
+
+form {
+  display: flex;
+  background-color: #99aaab;
+  justify-content: right;
+  display: table-cell;
+  padding: 25px;
+  margin-right: auto;
+  position: fixed;
+}
+
+.card {
+  background-color: #eee;
+  display: table-column;
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+  display: block;
+  justify-content:space-between;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative
+} 
+
+.li {
+  border: 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}

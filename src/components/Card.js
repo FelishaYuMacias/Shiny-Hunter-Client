@@ -12,7 +12,12 @@ const Card = (props) => {
   }, [])
 
   return (
-    <img src={sprite} alt="shiny" />
+    <div className='card'>
+      <div className='li'>
+    <img src={sprite} alt="shiny"
+     />
+   </div>
+  </div>
   )
 }
 
