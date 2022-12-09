@@ -1,28 +1,24 @@
 import { useEffect, useState } from 'react'
 import API from '../util/API'
 import Card from '../components/Card'
-// import dateFormat, { dateStarted } from "dateformat";
-// dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
-
-const now = new Date();
 
 
-const Hunts = () => {
 
-  const [hunt, setHunt] = useState(null)
+const Myhunts = (props) => {
+  const [myhunt, setMyhunt] = useState(null)
 
   useEffect(() => {
-    API.getHunts().then(res => {
-      setHunt(res)
+    API.getUserHunts().then(res => {
+      setMyhunt(res)
     })
   }, [])
 
-  if (!hunt) return null
+  if (!myhunt) return null
 
   return (
     <>
-      {hunt.map((data) => {
-        // console.log(hunt)
+      {myhunt.map((data) => {
+        console.log(myhunt)
         if (data.pokemon) {
           return (
 
@@ -46,4 +42,4 @@ const Hunts = () => {
   )
 }
 
-export default Hunts
+export default Myhunts

@@ -19,10 +19,10 @@ function App() {
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
     if (storedToken) {
-      console.log(storedToken)
+      // console.log(storedToken)
       API.getUserFromToken(storedToken).then(data => {
         if (data.user) {
-          console.log(data)
+          // console.log(data)
           setToken(storedToken)
           setIsLoggedIn(true)
           setUserId(data.user._id)
