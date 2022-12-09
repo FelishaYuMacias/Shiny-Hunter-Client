@@ -1,11 +1,6 @@
 import axios from 'axios'
-<<<<<<< HEAD
-const URL_PREFIX = 'http://localhost:3001'
-// const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
-=======
 //const URL_PREFIX = 'http://localhost:3001'
 const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
->>>>>>> c5be43b30892e1c67f46b284d704cdb5eca753c0
 
 const API = {
   login: (userObj)=>{
