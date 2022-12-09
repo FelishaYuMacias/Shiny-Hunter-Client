@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import Huntform from './Huntform';
-import Hunts from './Hunt';
 
 function Hunts() {
   const [hunts, setHunts] = useState([]);
 
   const addHuntsItem = (item) => {
     console.log(
-      ' ~ file: Hunts.js ~ line 10 ~ addHuntsItem ~ item',
       item
     );
 
@@ -21,7 +19,7 @@ function Hunts() {
     setHunts(newHunts);
   };
 
-  const completeHunts = (id) => {
+  const completeHuntsItem = (id) => {
    
     let updatedHunts = hunts.map((item) => {
       if (item.id === id) {

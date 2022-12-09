@@ -1,17 +1,16 @@
 import axios from 'axios'
-<<<<<<< HEAD
-const URL_PREFIX = 'http://localhost:3001'
-// const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
-=======
-//const URL_PREFIX = 'http://localhost:3001'
+// const URL_PREFIX = 'http://localhost:3001'
 const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
->>>>>>> c5be43b30892e1c67f46b284d704cdb5eca753c0
 
 const API = {
-  login: async (userObj) => {
-    return await axios.get(`${URL_PREFIX}/api/users/login`, {
-      userObj
-    }).then(res => res.json)
+  login: (userObj)=>{
+    return fetch(`${URL_PREFIX}/api/users/login`,{
+        method:"POST",
+        body:JSON.stringify(userObj),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    }).then(res=>res.json())
   },
   signup: async (userObj) => {
     return await axios.get(`${URL_PREFIX}/api/users/signup`, {
@@ -19,11 +18,11 @@ const API = {
     }).then(res => res.json())
   },
   getUserFromToken: async (token) => {
-    return await axios.getfetch(`${URL_PREFIX}/api/users/getuserfromtoken`, {
+    return await axios.get(`${URL_PREFIX}/api/users/getuserfromtoken`, {
       headers: {
         "Authorization": `Bearer ${token}`
       }
-    }).then(res => res.json())
+    }).then(res=>res.json())
   },
   getHunts: async () => {
     return axios.get(`${URL_PREFIX}/api/hunts`).then(res => res.data)
