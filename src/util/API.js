@@ -13,7 +13,7 @@ const API = {
     }).then(res=>res.json())
 },
   signup: async (userObj) => {
-    return await axios.get(`${URL_PREFIX}/api/users/signup`, {
+    return await axios.post(`${URL_PREFIX}/api/users/signup`, {
       userObj
     }).then(res => res.json())
   },
