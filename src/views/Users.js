@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 
 
-const URL_PREFIX = 'http://localhost:3001'
-// const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
+// const URL_PREFIX = 'http://localhost:3001'
+const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
 
 function Users() {
     const [users, setUsers] = useState([])
