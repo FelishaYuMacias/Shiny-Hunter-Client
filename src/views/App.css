@@ -72,33 +72,24 @@ button {
   color: red;
 }
 
-form {
-  display: flex;
-  background-color: #99aaab;
-  justify-content: right;
-  display: table-cell;
-  padding: 25px;
-  margin-right: auto;
-  position: fixed;
-}
-
 .card {
   background-color: #eee;
-  display: table-column;
   display: flex;
   flex-wrap: wrap;
-  float: right;
-  display: block;
-  justify-content:space-between;
+  display: grid;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  position: relative
+  position: relative;
+  margin: 10px;
+  height: 25%;
+  width: 25%;
+  font-size: 10px;
+  grid-row: auto;
+  gap: 1rem;
 } 
 
-.li {
-  border: 1px solid;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
+h1 {
+  margin: 0px;
 }
+

@@ -1,23 +1,15 @@
 import { useEffect, useState } from 'react'
 import API from '../util/API'
 import Card from '../components/Card'
+// import dateFormat, { dateStarted } from "dateformat";
+// dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+
+const now = new Date();
 
 
 const Hunts = () => {
 
   const [hunt, setHunt] = useState(null)
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    localStorage.setItem('myCount', count);
-  });
-
-  const handleIncrease = () => {
-    setCount(count + 1);
-  };
-  const handleDecrease = () => {
-    setCount(count - 1);
-  };
 
   useEffect(() => {
     API.getHunts().then(res => {
@@ -30,31 +22,25 @@ const Hunts = () => {
   return (
     <>
       {hunt.map((data) => {
+        console.log(hunt)
         if (data.pokemon) {
-          return <Card pokemon={data.pokemon.species} />
-        }
+          return (
+
+            <div className='card'>
+          <div>
+            <h1>{data.pokemon.species}</h1>
+            <Card pokemon={data.pokemon.species} />
+          <p>{data.method}</p>
+          <p>{data.dateStarted}</p>
+          <p>{data.counter}</p>
+          <p>{data.pokemon.form}</p>
+          <p>{data.pokemon.level}</p>
+          <p>{data.pokemon.gender}</p>
+          </div>
+        </div>
+       ) 
+      } 
       })}
-      <form>
-      <div>
-      <h1>Method</h1>
-      <input></input>
-      
-      <h1>Count</h1>
-      <p> {count} </p> 
-      <button type="button" onClick={handleDecrease}>
-        -
-      </button><button type="button" onClick={handleIncrease}>
-        +
-      </button>
-      <h1>Phase</h1>
-      <input></input>
-      <h1>Game</h1>
-      <input></input>
-      <h1>Pokemon</h1>
-      <input></input>
-      </div>
-      <button>Enter</button>
-      </form>
     </>
     
   )

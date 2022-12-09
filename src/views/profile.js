@@ -1,8 +1,10 @@
 import React,{useEffect} from 'react'
 import Hunts from './Hunts'
 import API from "../util/API"
+import { useNavigate } from "react-router-dom"
 
 export default function Profile(props) {
+  const navigate = useNavigate();
     useEffect(()=>{
         const storedToken = localStorage.getItem("token")
         if(storedToken){
