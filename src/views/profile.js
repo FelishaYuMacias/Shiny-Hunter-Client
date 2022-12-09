@@ -33,7 +33,7 @@ export default function Profile(props) {
         <Hunts user_Id={props.id} token={props.token}/>
         </div>
         ):(
-            <h1>Loading....</h1>
+            <h1>Loading</h1>
         )
     }
     </>
