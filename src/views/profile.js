@@ -1,43 +1,41 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from "react-router-dom"
+import React,{useEffect} from 'react'
+import Hunts from './Hunts'
 import API from "../util/API"
-import Hunts from "../components/Hunt"
+import Huntform from "../components/Huntform";
 
- function Profile(props) {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token")
-    if (storedToken) {
-      console.log(storedToken)
-      API.getUserFromToken(storedToken).then(data => {
-        if (data.user) {
-          console.log(data)
-          props.setToken(storedToken)
-          props.setIsLoggedIn(true)
-          props.setUserId(data.user.id)
+export default function Profile(props) {
+    useEffect(()=>{
+        const storedToken = localStorage.getItem("token")
+        if(storedToken){
+          console.log(storedToken)
+          API.getUserFromToken(storedToken).then(data=>{
+            if(data.user){
+              console.log(data)
+              props.setToken(storedToken)
+              props.setIsLoggedIn(true)
+              props.setUserId(data.user.id)
+            } else {
+                
+            }
+          })
         } else {
-          navigate("/login")
+          console.log('no stored token')
+         
         }
-      })
-    } else {
-      console.log('no stored token')
-      navigate("/login")
-    }
-  }, [props, navigate]);
-  
-
+      },[props])
   return (
     <>
-      {
-        props.isLoggedIn ? (
-          <div className="Profile">
-            <h1>Welcome {props.username}!</h1>
-          </div>
-        ) : (
-          <h1>Loading....</h1>
+    {
+        props.isLoggedIn?(
+        <div className="Profile">
+        <h1>Welcome {props.username}!</h1>
+        <Hunts userId={props.id} token={props.token}/>
+        <Huntform/>
+        </div>
+        ):(
+            <h1>Loading....</h1>
         )
-      }
+    }
     </>
   )
 }
-export default Profile
