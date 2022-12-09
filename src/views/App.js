@@ -64,8 +64,8 @@ function App() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     setUserId(0);
-    setToken("password");
-    setUsername("james")
+    setToken("");
+    setUsername("")
   }
 
   return (
