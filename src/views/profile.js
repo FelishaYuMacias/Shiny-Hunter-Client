@@ -30,7 +30,7 @@ export default function Profile(props) {
         props.isLoggedIn?(
         <div className="Profile">
         <h1>Welcome {props.username}!</h1>
-        <Hunts user_Id={props.id} token={props.token}/>
+        <Hunts userId={props.id} token={props.token}/>
         </div>
         ):(
             <h1>Loading....</h1>
