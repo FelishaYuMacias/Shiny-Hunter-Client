@@ -15,15 +15,16 @@ function App() {
   const [username, setUsername] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
+  
 
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
     if (storedToken) {
-      console.log(storedToken)
+      // console.log(storedToken)
       API.getUserFromToken(storedToken).then(data => {
         if (data.user) {
-          console.log(data)
+          // console.log(data)
           setToken(storedToken)
           setIsLoggedIn(true)
           setUserId(data.user.id)
