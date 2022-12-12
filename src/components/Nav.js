@@ -16,6 +16,7 @@ function Navbar(props) {
       <Link to='/users'>Users</Link>
       <Link to='/hunts'>Hunts</Link>
       {props.isLoggedIn ? <Link to="/profile">Profile</Link> : null}
+      {props.isLoggedIn ? <Link to="/huntform">Add Hunt</Link> : null}
       {props.isLoggedIn ? <button onClick={logoutFunc}>Logout</button> : <Link to="/login"><button type='button' className='nes-btn is-primary'>Login</button></Link>}
     </nav>
   )

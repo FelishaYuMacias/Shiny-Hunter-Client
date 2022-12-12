@@ -4,8 +4,6 @@ import Card from '../components/Card'
 // import dateFormat, { dateStarted } from "dateformat";
 // dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
 
-const now = new Date();
-
 
 const Hunts = () => {
 

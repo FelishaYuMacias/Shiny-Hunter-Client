@@ -8,6 +8,7 @@ import Login from './Login'
 import Hunts from './Hunts'
 import Profile from './Profile'
 import Users from './Users';
+import Huntform from './Huntform';
 
 function App() {
   const [userId, setUserId] = useState(0)
@@ -85,6 +86,15 @@ const handleLogout = () => {
             handleSignupSubmit={handleSignupSubmit}
           />} />
           <Route path="/profile" element={<Profile
+            isLoggedIn={isLoggedIn}
+            userId={userId}
+            token={token}
+            username={username}
+            setIsLoggedIn={setIsLoggedIn}
+            setToken={setToken}
+            setUserId={setUserId}
+          />} />
+          <Route path="/huntform" element={<Huntform
             isLoggedIn={isLoggedIn}
             userId={userId}
             token={token}
