@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import API from "../util/API"
-import { useNavigate } from "react-router-dom"
+import Hunts from "./Hunts"
+
 
 export default function Profile(props) {
   const navigate = useNavigate();
