@@ -27,6 +27,17 @@ export default function Profile(props) {
     fetchUser();
   }, []);
 
+  const handleUpdate = (e) => {
+    console.log("Update clicked")
+    e.preventDefault();
+
+  };
+
+  const handleDelete = (e) => {
+    console.log("Delete clicked")
+    e.preventDefault();
+
+  };
 
   return (
     <>
@@ -53,6 +64,8 @@ export default function Profile(props) {
                     <li>Level: {hunts.pokemon.level}</li>
                     <li>Form: {hunts.pokemon.form}</li>
                     <li>Gender: {hunts.pokemon.gender}</li>
+                    <li type="button" className="nes-btn is-primary" onClick={handleUpdate}>Update</li>
+                    <li type="button" className="nes-btn is-error" onClick={handleDelete}>Delete</li>
                   </ul>
                   </ul>
                 </div>

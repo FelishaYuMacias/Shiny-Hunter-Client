@@ -45,9 +45,6 @@ const Hunts = () => {
           <p>{data.pokemon.level}</p>
           <h4>Gender</h4>
           <p>{data.pokemon.gender}</p>
-          <button type="button" class="nes-btn is-primary" onClick={handleFormSubmit}>
-            Update
-          </button>
           </div>
         </div>
       </div>
