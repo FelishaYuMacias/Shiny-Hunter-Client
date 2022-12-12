@@ -9,6 +9,7 @@ import Hunts from './Hunts'
 import Profile from './Profile'
 import Game from './Game'
 import Users from './Users';
+import Huntform from './Huntform';
 
 function App() {
   const [userId, setUserId] = useState(0)
@@ -17,13 +18,14 @@ function App() {
   const [token, setToken] = useState("")
 
 
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
     if (storedToken) {
-      console.log(storedToken)
+      // console.log(storedToken)
       API.getUserFromToken(storedToken).then(data => {
         if (data.user) {
-          console.log(data)
+          // console.log(data)
           setToken(storedToken)
           setIsLoggedIn(true)
           setUserId(data.user.id)
@@ -60,10 +62,10 @@ function App() {
       }
     })
   }
-console.log("login with this token")
-console.log(localStorage.getItem("token"))
-  
-const handleLogout = () => {
+  console.log("login with this token")
+  console.log(localStorage.getItem("token"))
+
+  const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     setUserId(0);
@@ -94,6 +96,15 @@ const handleLogout = () => {
             setUserId={setUserId}
           />} />
           <Route path="/game" element={<Game />} />
+          <Route path="/huntform" element={<Huntform
+            isLoggedIn={isLoggedIn}
+            userId={userId}
+            token={token}
+            username={username}
+            setIsLoggedIn={setIsLoggedIn}
+            setToken={setToken}
+            setUserId={setUserId}
+          />} />
         </Routes>
       </Router>
     </div>

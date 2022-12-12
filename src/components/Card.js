@@ -12,8 +12,10 @@ const Card = (props) => {
   }, [])
   
   return (
+    <div className='image'>
     <img src={sprite} alt="shiny"
     />
+    </div>
   )
 }
 
