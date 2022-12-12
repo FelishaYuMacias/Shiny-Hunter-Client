@@ -3,6 +3,7 @@ import Hunts from './Hunts'
 import API from "../util/API"
 import { useNavigate } from "react-router-dom"
 
+
 export default function Profile(props) {
   const navigate = useNavigate();
     useEffect(()=>{
@@ -30,7 +31,7 @@ export default function Profile(props) {
         props.isLoggedIn?(
         <div className="Profile">
         <h1>Welcome {props.username}!</h1>
-        <Hunts user_Id={props.id} token={props.token}/>
+        <Hunts user_Id={props.id} token={props.token} />
         </div>
         ):(
             <h1>Loading.......</h1>

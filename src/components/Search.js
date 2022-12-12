@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const Search = () => {
-  const [pokemon, setPokemon] = useState(" ");
+  const [sprites, setPokemon] = useState(" ");
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("")
   const [loading, setLoading] = useState(false)
@@ -10,7 +10,7 @@ const Search = () => {
   const getPokemon = async () => {
     const toArray = [];
     try {
-      const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+      const url = `https://pokeapi.co/api/v2/pokemon/${sprites}`
       const res = await axios.get(url)
       toArray.push(res.data)
       setPokemonType(res.data.types[0].type.name)
@@ -45,7 +45,7 @@ const Search = () => {
       {pokemonData.map((data) => {
         return (
           <div className='container'>
-            {!loading && pokemon ? (
+            {!loading && sprites ? (
                <div>
             </div>
             ): null}
