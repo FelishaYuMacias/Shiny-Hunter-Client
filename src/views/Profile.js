@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import axios from 'axios'
 const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
 
+
 export default function Profile(props) {
   // console.log(props.userId)
 
@@ -75,9 +76,9 @@ export default function Profile(props) {
           </div>
           </div>
         ) : (
-          <h1>Loading....</h1>
-        )
-      }
-    </>
-  )
-}
+            <h1>Loading....</h1>
+          )
+        }
+      </>
+    )
+  }
