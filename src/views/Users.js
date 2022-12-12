@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Image } from '@chakra-ui/react'
 import axios from 'axios'
 
 
@@ -24,8 +25,8 @@ function Users() {
     return (
             <div>
                 {users.map((user) => (
-                    <h3 key={user._id}>{user.username}</h3>
-                ))}
+                    <h6 key={user._id}>{user.username} <Image boxSize='65px' src='/img/pikachu.png' alt='pikachu' /> </h6>
+                    ))}
             </div>
     );
 }

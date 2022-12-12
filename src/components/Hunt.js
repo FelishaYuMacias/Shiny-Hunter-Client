@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Huntform from './Huntform';
-import Hunt from './Hunt';
 
 function Hunts() {
   const [hunts, setHunts] = useState([]);
