@@ -22,7 +22,7 @@ const Hunts = () => {
   return (
     <>
       {hunt.map((data) => {
-        // console.log(hunt)
+        console.log(hunt)
         if (data.pokemon) {
           return (
 
