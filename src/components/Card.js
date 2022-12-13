@@ -9,12 +9,11 @@ const Card = (props) => {
     PokeAPI.getSprite(props.pokemon).then(res => {
       setSprite(res)
     })
-  }, [])
+  }, [props.pokemon])
   
   return (
     <div className='image'>
-    <img src={sprite} alt="shiny"
-    />
+      <img src={sprite} alt="shiny" />
     </div>
   )
 }

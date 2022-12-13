@@ -34,8 +34,8 @@ const Search = () => {
     <>
       <form onSubmit={handleSubmit}>
         <label>
-          <button>Search</button>
-          <input
+          <button className="nes-btn is-success"> Search</button>
+            <input class="nes-input"
             type="text"
             onChange={handleChange}
             placeholder="Enter Pokemon Name"
@@ -49,8 +49,11 @@ const Search = () => {
                <div>
             </div>
             ): null}
+        <div className="nes-container with-title is-centered">
+          <span className="nes-text is-primary">
             <h1>{data.species.name}</h1>
             <img src={data.sprites["front_shiny"]} alt="shiny" />
+            
             <div className='divTable'>
               <div className='divTableBody'>
                 <div className='divTableRow'>
@@ -71,14 +74,16 @@ const Search = () => {
                     {Math.round(data.weight / 4.3)} lbs
                   </div>
                 </div>
-                <div className='divTableRow'>
+                  <div className='divTableRow'>
                   <div className='divTableCell'>Number of Battle</div>
                   <div className='divTableCell'>{data.game_indices.length}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </span>
+        </div>
+      </div>
         )
       })
       }
