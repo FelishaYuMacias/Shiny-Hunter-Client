@@ -24,7 +24,7 @@ function Users() {
 
     return (
             <div className="nes-table-responsive">
-                 <table class="nes-table is-bordered is-centered">
+                 <table className="nes-table is-bordered is-centered">
                 {users.map((user) => (
                     <h6 key={user._id}>{user.username} <Image boxSize='65px' src='/img/pikachu.png' alt='pikachu' /> </h6>
                     ))}

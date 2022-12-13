@@ -9,10 +9,18 @@ import Profile from './Profile'
 import Game from './Game'
 import Users from './Users';
 import Huntform from './Huntform';
+import Signup from './Signup'
+import UpdateHunt from './UpdateHunt';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState(null)
+  const [currentForm, setCurrentForm] = useState('login')
+
+
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
 
   useEffect(() => {
     const storedToken = JSON.parse(localStorage.getItem('user'))
@@ -35,10 +43,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />} />
           <Route path="/hunts" element={<Hunts />} />
-          <Route path="/login"
-            element={<Login
-              isLoggedIn={isLoggedIn}
-            />} />
+          <Route path="/login" element={currentForm === "Login" ? <Login onFormSwitch={toggleForm}  
+          isLoggedIn={isLoggedIn}/> : <Signup onFormSwitch={toggleForm} />} />
+          <Route path="/huntform" element={<Huntform
+            isLoggedIn={isLoggedIn}
+          />} />
           <Route path="/profile"
             element={<Profile
               isLoggedIn={isLoggedIn}
@@ -53,5 +62,4 @@ function App() {
     </div>
   );
 };
-
 export default App
