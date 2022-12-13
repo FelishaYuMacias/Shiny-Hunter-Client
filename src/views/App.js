@@ -6,6 +6,7 @@ import Home from './Home'
 import Login from './Login'
 import Hunts from './Hunts'
 import Profile from './Profile'
+import Game from './Game'
 import Users from './Users';
 import Huntform from './Huntform';
 
@@ -46,6 +47,7 @@ function App() {
             element={<Huntform
               isLoggedIn={isLoggedIn}
             />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </Router>
     </div>
