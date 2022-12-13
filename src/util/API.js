@@ -57,7 +57,7 @@ const API = {
       headers: {
         "Authorization": `Bearer ${token}`
       }
-    })
+    }).then(res => res.data)
   },
   createPokemon: async (pokemon, token) => {
     return await axios.post(`${URL_PREFIX}/api/pokemon`, {
