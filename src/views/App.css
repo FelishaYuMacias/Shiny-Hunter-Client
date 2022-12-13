@@ -3,6 +3,10 @@
 * {
   box-sizing: border-box;
 }
+body {
+  background-color: wheat;
+  
+}
 
 .App {
   text-align: center;
@@ -11,6 +15,12 @@
 nav > * {
   margin: 0 20px;
 }
+.divTable {
+  margin-top: 50px;
+  display: flex;
+}
+
+
 
 .divTable {
   display: table;
@@ -52,15 +62,19 @@ nav > * {
 }
 
 .container {
-  display: flex;
   opacity: 0.9;
-  background-color: #99aaab;
+  background-color: wheat;
+  max-width: fit-content;
   justify-content: center;
+  display: flex;
+  margin: 25px;
+  position: relative;
+  margin-left: 33.5%;
+  margin-right: 50% auto;
 }
 
 img {
   height: 16em;
-  color: none;
 }
 
 input {
@@ -74,7 +88,6 @@ button {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  color: red;
   padding: 10px;
 }
 
@@ -82,10 +95,6 @@ h1 {
   margin: 0px;
 }
 
-h6 {
-  font-size: 25px;
-  margin: auto;
-}
 
 .form {
   margin: auto;
@@ -119,7 +128,6 @@ p {
   padding: 5px;
   background-color: wheat;
   text-align: start;
-
 }
 
 h3 {
@@ -127,9 +135,27 @@ h3 {
   padding: 25px;
 }
 
+.nes-container {
+  position:absolute;
+  border: none;
+  text-decoration: none;
+}
+
+.nes-table-responsive {
+  margin-left: 45%;
+  margin-top: 2%;
+  text-align: left;
+}
+
+.nes-table-responsive .Image {
+ align-items: right;
+}
+
+.nes-container is-rounded
+
 .card {
   background-color: #eee;
-  margin: 15px auto;
+  margin: 0px auto;
   max-width: 800px;
   align-items: center;
   padding: 10px;
@@ -137,22 +163,37 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   box-shadow: 0 0 3px black;
-  border-radius: 5px;
 } 
 
-.text {
-  padding-left: 25px;
-}
 .column {
   float: left;
-  margin: 10px;
+  margin: 5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  
 }
 
+.row{
+  display: table;
+  content: "";
+  align-items: center;
+  float: left;
+  margin: 20px;
+}
+
+h6 {
+  font-size: 25px;
+  margin: auto;
+  display: list-item;
+}
 
 @media screen and (max-width: 600px) {
-  .column {
+  .column,
+  .card,
+  .container,
+  .label,
+  .nes-container,
+  nav {
     width: 100%;
     display: block;
     margin-bottom: 20px;
