@@ -3,31 +3,24 @@ import axios from 'axios'
 const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
 
 const API = {
-  login: (userObj) => {
-    return fetch(`${URL_PREFIX}/api/users/login`, {
-      method: "POST",
-      body: JSON.stringify(userObj),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(res => res.json())
+  login: async (userObj) => {
+    return await axios.post(`${URL_PREFIX}/api/users/login`, {
+      username: userObj.username,
+      password: userObj.password,
+    }).then(res => res.data)
   },
-  signup: (userObj) => {
-    return fetch(`${URL_PREFIX}/api/users/signup`, {
-      method: "POST",
-      body: JSON.stringify(userObj),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(res => res.json())
+  signup: async (userObj) => {
+    return await axios.post(`${URL_PREFIX}/api/users/signup`, {
+      username: userObj.username,
+      password: userObj.password,
+    }).then(res => res.data)
   },
-  getUserFromToken: (token) => {
-    return fetch(`${URL_PREFIX}/api/users/getuserfromtoken`, {
-      method: "GET",
+  getUserFromToken: async (token) => {
+    return await axios.get(`${URL_PREFIX}/api/users/getuserfromtoken`, {
       headers: {
         "Authorization": `Bearer ${token}`
       }
-    }).then(res => res.json())
+    }).then(res => res.data)
   },
   getUser: async (userId) => {
     return await axios.get(`${URL_PREFIX}/api/users/${userId}`).then(res => res.data)
