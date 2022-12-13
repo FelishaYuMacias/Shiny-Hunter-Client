@@ -47,6 +47,7 @@ function App() {
             element={<Huntform
               isLoggedIn={isLoggedIn}
             />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </Router>
     </div>
