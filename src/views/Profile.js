@@ -1,5 +1,7 @@
 import './Profile.css';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
+import {Routes, Route, useNavigate} from 'react-router-dom';
+import UpdateHunt from './UpdateHunt';
 import Card from '../components/Card';
 import API from '../util/API'
 import axios from 'axios'
@@ -8,7 +10,7 @@ const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
 
 export default function Profile(props) {
     // console.log(props.userId)
-
+    const navigate = useNavigate();
 
     const [user, setUser] = useState([])
     const [userHunts, setUserhunts] = useState([])
@@ -34,19 +36,20 @@ export default function Profile(props) {
         }
         )
     };
-    
+    // const [isShown, setIsShown] = useState(false);
     const handleUpdate = (e) => {
+        // e.preventDefault();
         console.log("Update clicked")
-        e.preventDefault();
-        
+        navigate('../UpdateHunt')
+        // setIsShown(current => !current);
+        // console.log(isShown)
     };
-    
-    
+
     const handleDelete = (e) => {
         console.log("Delete clicked")
         e.preventDefault();
         console.log(`this hunt is ${thisHunt}`)
-        API.deleteHunt(thisHunt, props.token).then(console.log(`hunt id ${thisHunt} deleted`),window.location.reload(false))
+        API.deleteHunt(thisHunt, props.token).then(console.log(`hunt id ${thisHunt} deleted`), window.location.reload(false))
 
     };
     useEffect(() => {
@@ -60,7 +63,7 @@ export default function Profile(props) {
                 props.isLoggedIn ? (
                     <div className="Profile">
 
-                        <h1>Welcome {user.username}!</h1>
+                        <h1>Welcome {props.username}!</h1>
 
                         <div>
 

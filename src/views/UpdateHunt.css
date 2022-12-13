@@ -1,0 +1,12 @@
+.update {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+.nes-input {
+    max-width: 50%;
+    /* align-content: center; */
+}
+.update-btn, .nes-field {
+    margin: 20px;
+}
