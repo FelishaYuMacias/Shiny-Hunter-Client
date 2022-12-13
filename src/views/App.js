@@ -57,6 +57,11 @@ function App() {
               isLoggedIn={isLoggedIn}
             />} />
           <Route path="/game" element={<Game />} />
+          <Route path="/updatehunt"
+            element={<Huntform
+              isLoggedIn={isLoggedIn}
+            />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </Router>
     </div>
