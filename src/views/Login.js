@@ -10,8 +10,6 @@ export default function Login(props) {
   },[props.isLoggedIn])
     const [loginUsername, setLoginUsername] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
-    const [signupUsername, setSignupUsername] = useState("")
-    const [signupPassword, setSignupPassword] = useState("")
 
     let history = useNavigate();
     
@@ -26,13 +24,6 @@ export default function Login(props) {
         history.push("/")
       }
     }
-    const signupHandle=e=>{
-        e.preventDefault();
-        props.handleSignupSubmit({
-          username:signupUsername,
-          password:signupPassword
-        })
-      }
    
   return (
     <div>
@@ -42,13 +33,6 @@ export default function Login(props) {
       <input type="password" name="password" placeholder = "Password" value={loginPassword} onChange={e=>setLoginPassword(e.target.value)}/>
       <button>Log in!</button>
     </form>
-    <form onSubmit={signupHandle}>
-      <h3>Signup</h3>
-      <input name="username" placeholder = "Username" value={signupUsername} onChange={e=>setSignupUsername(e.target.value)}/>
-      <input type="password" name="password" placeholder = "Password" value={signupPassword} onChange={e=>setSignupPassword(e.target.value)}/>
-      <button>Signup!</button>
-    </form>
-    
-    </div>
+    <button className="link-btn" onClick={() => props.onFormSwitch('Signup')}>Need an account? Register here.</button> </div>
   )
 }

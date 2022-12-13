@@ -9,12 +9,19 @@ import Hunts from './Hunts'
 import Profile from './Profile'
 import Users from './Users';
 import Huntform from './Huntform';
+import Signup from './Signup'
 
 function App() {
   const [userId, setUserId] = useState(0)
   const [username, setUsername] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
+  const [currentForm, setCurrentForm] = useState('login')
+
+
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
   
 
 
@@ -27,7 +34,7 @@ function App() {
           // console.log(data)
           setToken(storedToken)
           setIsLoggedIn(true)
-          setUserId(data.user.id)
+          setUserId(data.user._id)
           setUsername(data.user.username)
         }
       })
@@ -80,11 +87,9 @@ const handleLogout = () => {
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />}/>
           <Route path="/hunts" element={<Hunts />} />
-          <Route path="/login" element={<Login
-            isLoggedIn={isLoggedIn}
-            handleLoginSubmit={handleLoginSubmit}
-            handleSignupSubmit={handleSignupSubmit}
-          />} />
+          <Route path="/login" element={currentForm === "Login" ? <Login onFormSwitch={toggleForm}  
+          isLoggedIn={isLoggedIn}  handleLoginSubmit={handleLoginSubmit}/> : <Signup onFormSwitch={toggleForm} 
+          handleSignupSubmit={handleSignupSubmit} />} />
           <Route path="/profile" element={<Profile
             isLoggedIn={isLoggedIn}
             userId={userId}
@@ -108,5 +113,4 @@ const handleLogout = () => {
     </div>
   );
 };
-
 export default App
