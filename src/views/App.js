@@ -1,7 +1,6 @@
 import './App.css';
 import { useEffect, useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import API from '../util/API'
 import Nav from '../components/Nav'
 import Home from './Home'
 import Login from './Login'
@@ -11,65 +10,20 @@ import Users from './Users';
 import Huntform from './Huntform';
 
 function App() {
-  const [userId, setUserId] = useState(0)
-  const [username, setUsername] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [token, setToken] = useState("")
-  
-
+  const [token, setToken] = useState(null)
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token")
+    const storedToken = JSON.parse(localStorage.getItem('user'))
     if (storedToken) {
-      // console.log(storedToken)
-      API.getUserFromToken(storedToken).then(data => {
-        if (data.user) {
-          // console.log(data)
-          setToken(storedToken)
-          setIsLoggedIn(true)
-          setUserId(data.user.id)
-          setUsername(data.user.username)
-        }
-      })
-    } else {
-      console.log('no stored token')
+      setToken(storedToken.token)
+      setIsLoggedIn(true)
     }
-  }, [])
+  }, [token])
 
-  const handleLoginSubmit = userObj => {
-    API.login(userObj).then(data => {
-      console.log(data);
-      if (data.token) {
-        setUserId(data.user._id)
-        setToken(data.token)
-        setIsLoggedIn(true)
-        setUsername(data.user.username)
-        localStorage.setItem("token", data.token)
-      }
-    })
-  }
-
-  const handleSignupSubmit = userObj => {
-    API.signup(userObj).then(data => {
-      console.log(data);
-      if (data.token) {
-        setUserId(data.user._id)
-        setToken(data.token)
-        setIsLoggedIn(true)
-        setUsername(data.user.username)
-        localStorage.setItem("token", data.token)
-      }
-    })
-  }
-console.log("login with this token")
-console.log(localStorage.getItem("token"))
-  
-const handleLogout = () => {
-    localStorage.removeItem("token");
+  const handleLogout = () => {
+    localStorage.removeItem('user');
     setIsLoggedIn(false);
-    setUserId(0);
-    setToken("");
-    setUsername("")
   }
 
   return (
@@ -78,31 +32,20 @@ const handleLogout = () => {
         <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/users" element={<Users />}/>
+          <Route path="/users" element={<Users />} />
           <Route path="/hunts" element={<Hunts />} />
-          <Route path="/login" element={<Login
-            isLoggedIn={isLoggedIn}
-            handleLoginSubmit={handleLoginSubmit}
-            handleSignupSubmit={handleSignupSubmit}
-          />} />
-          <Route path="/profile" element={<Profile
-            isLoggedIn={isLoggedIn}
-            userId={userId}
-            token={token}
-            username={username}
-            setIsLoggedIn={setIsLoggedIn}
-            setToken={setToken}
-            setUserId={setUserId}
-          />} />
-          <Route path="/huntform" element={<Huntform
-            isLoggedIn={isLoggedIn}
-            userId={userId}
-            token={token}
-            username={username}
-            setIsLoggedIn={setIsLoggedIn}
-            setToken={setToken}
-            setUserId={setUserId}
-          />} />
+          <Route path="/login"
+            element={<Login
+              isLoggedIn={isLoggedIn}
+            />} />
+          <Route path="/profile"
+            element={<Profile
+              isLoggedIn={isLoggedIn}
+            />} />
+          <Route path="/huntform"
+            element={<Huntform
+              isLoggedIn={isLoggedIn}
+            />} />
         </Routes>
       </Router>
     </div>
