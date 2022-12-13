@@ -1,26 +1,19 @@
 import './Profile.css';
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card';
-import axios from 'axios'
-const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
+import API from '../util/API'
 
 
-export default function Profile(props) {
-  // console.log(props.userId)
-
-
+const Profile = (props) => {
   const [user, setUser] = useState([])
-  const [userHunts, setUserhunts] = useState([])
+  const [userHunts, setUserHunts] = useState([])
   const fetchUser = async () => {
-    const { data } = await axios.get(
-      `${URL_PREFIX}/api/users/${props.userId}`
-    );
-    const user = data;
-    setUser(user);
-    const userHunts = user.hunts;
-    setUserhunts(userHunts)
-    // console.log(user.hunts);
-    // console.log(userHunts)
+    const userId = JSON.parse(localStorage.getItem('user')).id
+    API.getUser(userId).then(res => {
+      console.log(res)
+      setUser(res)
+      setUserHunts(res.hunts)
+    })
   };
   const handleFormSubmit = (e) => {
     
@@ -30,7 +23,7 @@ export default function Profile(props) {
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [props.isLoggedIn]);
 
 
   return (
@@ -93,9 +86,11 @@ export default function Profile(props) {
           
           </div>
         ) : (
-            <h1>Loading....</h1>
-          )
-        }
-      </>
-    )
-  }
+          <h1>Loading....</h1>
+        )
+      }
+    </>
+  )
+}
+
+export default Profile
