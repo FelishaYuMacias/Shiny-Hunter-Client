@@ -40,7 +40,9 @@ export default function Profile(props) {
     const handleUpdate = (e) => {
         // e.preventDefault();
         console.log("Update clicked")
+        console.log(e.currentTarget.id);
         navigate('../UpdateHunt')
+        localStorage.setItem('hunt', e.currentTarget.id);
         // setIsShown(current => !current);
         // console.log(isShown)
     };
@@ -56,6 +58,9 @@ export default function Profile(props) {
         fetchUser();
     }, []);
 
+    // useEffect(() => {
+	// 	localStorage.setItem('hunt', JSON.stringify(thisHunt));
+	// }, [thisHunt]);
 
     return (
         <>
@@ -82,7 +87,7 @@ export default function Profile(props) {
                                                 <li>Level: {hunts.pokemon.level}</li>
                                                 <li>Form: {hunts.pokemon.form}</li>
                                                 <li>Gender: {hunts.pokemon.gender}</li>
-                                                <li type="button" className="nes-btn is-primary" onClick={handleUpdate}>Update</li>
+                                                <li id = {hunts._id}type="button" className="nes-btn is-primary" onClick={handleUpdate}>Update</li>
                                                 <li type="button" className="nes-btn is-error" onClick={handleDelete}>Delete</li>
                                             </ul>
                                         </ul>

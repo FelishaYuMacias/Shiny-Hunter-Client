@@ -16,6 +16,7 @@ function App() {
   const [username, setUsername] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
+  const [thisHunt, setThishunt] = useState()
   
 
 
@@ -25,7 +26,7 @@ function App() {
       // console.log(storedToken)
       API.getUserFromToken(storedToken).then(data => {
         if (data.user) {
-          // console.log(data)
+          console.log(data)
           setToken(storedToken)
           setIsLoggedIn(true)
           setUserId(data.user.id)
@@ -112,6 +113,7 @@ const handleLogout = () => {
             setIsLoggedIn={setIsLoggedIn}
             setToken={setToken}
             setUserId={setUserId}
+            setThishunt={thisHunt}
           />} />
         </Routes>
       </Router>
