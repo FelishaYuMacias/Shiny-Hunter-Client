@@ -35,7 +35,7 @@ const Search = () => {
       <form onSubmit={handleSubmit}>
         <label>
           <button className="nes-btn is-success"> Search</button>
-            <input class="nes-input"
+            <input className="nes-input"
             type="text"
             onChange={handleChange}
             placeholder="Enter Pokemon Name"
