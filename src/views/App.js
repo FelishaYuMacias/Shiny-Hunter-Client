@@ -10,6 +10,7 @@ import Game from './Game'
 import Users from './Users';
 import Huntform from './Huntform';
 import Signup from './Signup'
+import UpdateHunt from './UpdateHunt';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)

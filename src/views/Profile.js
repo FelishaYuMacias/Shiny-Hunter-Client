@@ -2,23 +2,47 @@ import './Profile.css';
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card';
 import API from '../util/API'
-
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const Profile = (props) => {
   const [user, setUser] = useState([])
   const [userHunts, setUserHunts] = useState([])
+  const [thisHunt, setThishunt] = useState()
   const fetchUser = async () => {
     const userId = JSON.parse(localStorage.getItem('user')).id
     API.getUser(userId).then(res => {
       console.log(res)
-      setUser(res)
-      setUserHunts(res.hunts)
+      const user=res;
+      setUser(user)
+      const userHunts= user.hunts
+      setUserHunts(userHunts)
+      const oneHunt = userHunts.filter((hunt, i) => {
+        i === i
+        // console.log(i);
+        // console.log(hunt._id)
+        const thisHunt = hunt._id
+        setThishunt(thisHunt)
+        // console.log(thisHunt)
+        console.log(props)
+    }
+    )
     })
   };
-  const handleFormSubmit = (e) => {
-    
-    e.preventDefault();
+  const handleUpdate = (e) => {
+    // e.preventDefault();
+    console.log("Update clicked")
+    console.log(e.currentTarget.id);
+    navigate('../UpdateHunt')
+    localStorage.setItem('hunt', e.currentTarget.id);
+    // setIsShown(current => !current);
+    // console.log(isShown)
+};
 
+const handleDelete = (e) => {
+    console.log("Delete clicked")
+    e.preventDefault();
+    console.log(`this hunt is ${thisHunt}`)
+    API.deleteHunt(thisHunt, props.token).then(console.log(`hunt id ${thisHunt} deleted`), window.location.reload(false))
   };
 
   useEffect(() => {
@@ -58,32 +82,16 @@ const Profile = (props) => {
                   <p> {hunts.pokemon.form}</p>
                   <h4>Gender:</h4> 
                   <p>{hunts.pokemon.gender}</p>
-                  <button type="button" class="nes-btn is-primary" onClick={handleFormSubmit}>
-                        Update...
+                  <button id = {hunts._id}type="button" className="nes-btn is-primary" onClick={handleUpdate}>Update
                     </button>
+                    <button type="button" className="nes-btn is-error" onClick={handleDelete}>Delete</button>
                   </div>
                 </div>
               </div>
             </div>
                 )
                 )}
-              </div>
-              {/* <div>
-              <h2> Your Pokemon:</h2>
-              <div>
-                {userHunts.map((hunts, index) => (
-                  <ul className = "hunts" key={index}>
-                    <Card pokemon={hunts.pokemon.species} />
-                    <li>Species: {hunts.pokemon.species}</li>
-                    <li>Level: {hunts.pokemon.level}</li>
-                    <li>Form: {hunts.pokemon.form}</li>
-                    <li>Gender: {hunts.pokemon.gender}</li>
-                  </ul>
-                ))}
-              </div>
-            </div> */}
-
-          
+              </div>        
           </div>
         ) : (
           <h1>Loading....</h1>
