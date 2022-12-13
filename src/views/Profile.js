@@ -22,6 +22,11 @@ export default function Profile(props) {
     // console.log(user.hunts);
     // console.log(userHunts)
   };
+  const handleFormSubmit = (e) => {
+    
+    e.preventDefault();
+
+  };
 
   useEffect(() => {
     fetchUser();
@@ -30,33 +35,45 @@ export default function Profile(props) {
 
   return (
     <>
+        <h1>Welcome {user.username}!</h1>
+        <h2> Your Hunts:</h2>
       {
         props.isLoggedIn ? (
-          <div className="Profile">
-
-            <h1>Welcome {user.username}!</h1>
-
             <div>
-
-              <h2> Your Hunts:</h2>
-
               <div>
                 {userHunts.map((hunts, index) => (
-                <div className= "nes-container">
-                  <ul className = "hunts" key={index}>
-                    <li>Method: {hunts.method}</li>
-                    <li>Counter: {hunts.counter}</li>
-                    <li>Phase: {hunts.phase}</li>
-                    <li>Pokemon: {hunts.pokemon.species}</li>
-                    <ul className = "hunts" key={index}>
+              <div className='row'>   
+                <div className='column'>
+                <div class="nes-container is-rounded">
+                  <div className='card'>
+                    <div class="nes-container is-rounded">
+                    <h3>{hunts.pokemon.species} 
                     <Card pokemon={hunts.pokemon.species} />
-                    <li>Level: {hunts.pokemon.level}</li>
-                    <li>Form: {hunts.pokemon.form}</li>
-                    <li>Gender: {hunts.pokemon.gender}</li>
-                  </ul>
-                  </ul>
+                    </h3>
+                  </div>
                 </div>
-                ))}
+                <div className ="text" key={index}>
+                  <h4>Method</h4>
+                  <p>{hunts.method}</p>          
+                  <h4>Counter</h4>
+                  <p> {hunts.counter}</p>
+                  <h4>Phase:</h4> 
+                  <p>{hunts.phase}</p>
+                  <h4>Level:</h4>
+                  <p> {hunts.pokemon.level}</p>
+                  <h4>Form:</h4>
+                  <p> {hunts.pokemon.form}</p>
+                  <h4>Gender:</h4> 
+                  <p>{hunts.pokemon.gender}</p>
+                  <button type="button" class="nes-btn is-primary" onClick={handleFormSubmit}>
+                        Update...
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                )
+                )}
               </div>
               {/* <div>
               <h2> Your Pokemon:</h2>
@@ -73,7 +90,7 @@ export default function Profile(props) {
               </div>
             </div> */}
 
-          </div>
+          
           </div>
         ) : (
             <h1>Loading....</h1>
