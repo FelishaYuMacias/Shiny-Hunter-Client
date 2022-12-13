@@ -3,7 +3,7 @@
     margin-left: auto;
     margin-top: 50px;
 }
-.nes-input {
+.nes-input, .nes-select {
     max-width: 50%;
     /* align-content: center; */
 }

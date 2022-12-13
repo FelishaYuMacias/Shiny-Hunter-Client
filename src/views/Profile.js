@@ -24,7 +24,7 @@ const Profile = (props) => {
     e.preventDefault();
     console.log("Update clicked")
     console.log(e.currentTarget.id);
-    navigate('../UpdateHunt')
+    navigate('../updatemyhunt')
     localStorage.setItem('hunt', e.currentTarget.id);
     // setIsShown(current => !current);
     // console.log(isShown)

@@ -8,18 +8,27 @@ const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
 export default function UpdateHunt(props) {
     const huntId = localStorage.getItem('hunt')
 
-    const [method, setMethod] = useState('');
-    const handleMethod = event => {
-        const method = event.target.value
-        setMethod(method);
-        console.log(`method is: ${method}`);
-    }
+    // const [method, setMethod] = useState('');
+    // const handleMethod = event => {
+    //     const method = event.target.value
+    //     setMethod(method);
+    //     console.log(`method is: ${method}`);
+    // }
 
-    const [counter, setCounter] = useState('');
+    const [method, setMethod] = useState(() => {
+        const hunt = JSON.parse(localStorage.getItem('currentHunt'))
+        if (hunt) {
+          return hunt.method
+        } else {
+          return "Random encounter"
+        }
+      })
+
+    const [count, setCount] = useState('');
     const handleCounter = event => {
-        const counter = event.target.value
+        const count = event.target.value
         setCounter(counter);
-        console.log(`counter is: ${counter}`);
+        console.log(`counter is: ${count}`);
     }
 
     const updateHunt = (e) => {
@@ -27,46 +36,53 @@ export default function UpdateHunt(props) {
         console.log("Submit clicked")
         console.log(`hunt id is ${huntId}`)
         console.log('new method is:', method);
-        console.log(`new counter is: ${counter}`);
-        setMethod("")
-        setCounter("")
-        // editThisHunt(huntId,updatedHunt)
+        console.log(`new counter is: ${count}`);
 
+        const user = JSON.parse(localStorage.getItem('user'))
+        const userId = user.id
+        const userToken = user.token
+
+        const hunt = {
+            method: document.querySelector('#huntMethod').value,
+            phase: 1,
+            userId: userId,
+            pokemon: res.data.pokemon._id
+          }
+
+          API.editHunt(hunt, userToken)
+          navigate('/profile')
+          localStorage.removeItem('currentHunt')
     };
-    // const editThisHunt = ()=>{
-    //     let newMethod = "RE"
-    //     console.log(newMethod)
-    // document.getElementById('method_field').value = newMethod
-    // console.log(newMethod)
-    // ,
-    // document.getElementById('counter_field').value = newCounter,
-    // document.getElementById('phase_field').value = newPhase,
-    // document.getElementById('game_field').value = newGame,
-    // document.getElementById('completed_field').value = newDateCompleted
-    //     const editHunt= async (updatedHunt, huntId, token) => {
-
-    //         return await axios.put(`${URL_PREFIX}/api/hunts/${huntId}`
-    //         , {
-    //           updatedHunt,
-    //           headers: {
-    //             "Authorization": `Bearer ${token}`
-    //         }
-    //     }
-    //     )
-    // }
-    // editHunt()
-    // console.log(editHunt)
-    // }
-
+    useEffect(() => {
+        const currentHunt = {
+          method: method,
+          count: count
+        }
+    
+        localStorage.setItem('currentHunt', JSON.stringify(currentHunt));
+      })
 
     return (
         <>
             <h1>Update Your Hunt</h1>
             <div className='update nes-container'>
-                <div className="nes-field is-inline updatedMethod">
-                    <label htmlFor="name_field">Updated Method</label>
-                    <input type="text" id="method_field" className="nes-input" name="method" onChange={handleMethod} value={method} />
-                </div>
+            <div className="nes-select is-inline">
+            <label htmlFor="method_field">Update Method</label>
+          <select required id="huntMethod" value={method} onChange={setMethod}>
+            <option value="Random encounter">Random encounter</option>
+            <option value="Soft Reset">Soft Reset</option>
+            <option value="Eggs">Eggs</option>
+            <option value="Trade">Trade</option>
+            <option value="Masuda">Masuda</option>
+            <option value="Pokeradar">Pokeradar</option>
+            <option value="Chain fishing">Chain fishing</option>
+            <option value="Friend safari">Friend safari</option>
+            <option value="Horde">Horde</option>
+            <option value="Dexnav">Dexnav</option>
+            <option value="S.O.S.">S.O.S.</option>
+            <option value="Wormhole">Wormhole</option>
+          </select>
+        </div>
                 <div className="nes-field is-inline  updatedCounter">
                     <label htmlFor="name_field">Updated Counter</label>
                     <input type="text" id="counter_field" className="nes-input" name="counter" onChange={handleCounter} value={counter} />

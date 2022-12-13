@@ -52,7 +52,7 @@ function App() {
             element={<Profile
               isLoggedIn={isLoggedIn}
             />} />
-          <Route path="/updateform"
+          <Route path="/updatemyhunt"
             element={<UpdateHunt
               isLoggedIn={isLoggedIn}
             />} />
