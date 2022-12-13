@@ -72,6 +72,7 @@ const Login = (props) => {
 
   return (
     <div>
+
       <form onSubmit={handleSignup}>
         <h3>Signup</h3>
         <input
@@ -86,8 +87,8 @@ const Login = (props) => {
           onChange={e => setSignupPassword(e.target.value)}
         />
         <button>Signup!</button>
-        <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Have a Account? Login here.</button>
       </form>
+        <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Have a Account? Login here.</button>
 
     </div>
   )

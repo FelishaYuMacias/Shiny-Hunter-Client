@@ -62,8 +62,8 @@ const Login = (props) => {
         onChange={e => setLoginPassword(e.target.value)}
       />
       <button>Log in!</button>
-      <button className="link-btn" onClick={() => props.onFormSwitch('Signup')}>Need an account? Register here.</button>
     </form>
+      <button className="link-btn" onClick={() => props.onFormSwitch('Signup')}>Need an account? Register here.</button>
     </div>
   )
 }
