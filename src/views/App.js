@@ -14,9 +14,9 @@ function App() {
   const [token, setToken] = useState(null)
 
   useEffect(() => {
-    const storedToken = JSON.parse(localStorage.getItem('user')).token
+    const storedToken = JSON.parse(localStorage.getItem('user'))
     if (storedToken) {
-      setToken(storedToken)
+      setToken(storedToken.token)
       setIsLoggedIn(true)
     }
   }, [token])
