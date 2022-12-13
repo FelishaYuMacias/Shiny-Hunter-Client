@@ -31,13 +31,15 @@ const Profile = (props) => {
   };
 
   const handleDelete = (e) => {
+    e.preventDefault();
     const user = localStorage.getItem('user')
     const token = user.token
 
     API.deleteHunt(userHunts[e.target.getAttribute('data-buttonid')]._id, token)
       .then(res => {
-        if (res.ok) {
+        if (res) {
           window.location.reload(true)
+          console.log(`hunt id ${userHunts[e.target.getAttribute('data-buttonid')]._id} deleted`)
         }
       })
   };
