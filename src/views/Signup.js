@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import API from '../util/API'
 
 const Login = (props) => {
-  const [loginUsername, setLoginUsername] = useState(null)
-  const [loginPassword, setLoginPassword] = useState(null)
   const [signupUsername, setSignupUsername] = useState(null)
   const [signupPassword, setSignupPassword] = useState(null)
 
@@ -19,40 +17,16 @@ const Login = (props) => {
 
   const storedUser = localStorage.getItem('user')
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleSignup = (e) => {
+    e.preventDefault()
 
     if (storedUser) {
       history.push('/')
     }
 
     const userObj = {
-      username: loginUsername,
-      password: loginPassword
-    }
-
-    API.login(userObj).then(data => {
-      if (data.token) {
-        const user = {
-          id: data.user._id,
-          token: data.token,
-          username: data.user.username
-        }
-
-        localStorage.setItem('user', JSON.stringify(user))
-        navigate('/profile')
-        window.location.reload()
-      }
-    })
-
-  }
-
-  const handleSignup = (e) => {
-    e.preventDefault()
-
-    const userObj = {
-      username: loginUsername,
-      password: loginPassword
+      username: signupUsername,
+      password: signupPassword
     }
 
     API.signup(userObj).then(data => {
@@ -88,7 +62,7 @@ const Login = (props) => {
         />
         <button>Signup!</button>
       </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Have a Account? Login here.</button>
+      <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Have a Account? Login here.</button>
 
     </div>
   )

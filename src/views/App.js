@@ -43,8 +43,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />} />
           <Route path="/hunts" element={<Hunts />} />
-          <Route path="/login" element={currentForm === "Login" ? <Login onFormSwitch={toggleForm}  
-          isLoggedIn={isLoggedIn}/> : <Signup onFormSwitch={toggleForm} />} />
+          <Route path="/login" element={currentForm === "Login" ? <Login onFormSwitch={toggleForm}
+            isLoggedIn={isLoggedIn} /> : <Signup onFormSwitch={toggleForm} />} />
           <Route path="/huntform" element={<Huntform
             isLoggedIn={isLoggedIn}
           />} />
@@ -52,8 +52,8 @@ function App() {
             element={<Profile
               isLoggedIn={isLoggedIn}
             />} />
-          <Route path="/huntform"
-            element={<Huntform
+          <Route path="/updateform"
+            element={<UpdateHunt
               isLoggedIn={isLoggedIn}
             />} />
           <Route path="/game" element={<Game />} />

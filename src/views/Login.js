@@ -48,21 +48,21 @@ const Login = (props) => {
 
   return (
     <div>
-    <form onSubmit={handleLogin}>
-      <h3>Login</h3>
-      <input
-        placeholder="Username"
-        value={loginUsername}
-        onChange={e => setLoginUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={loginPassword}
-        onChange={e => setLoginPassword(e.target.value)}
-      />
-      <button>Log in!</button>
-    </form>
+      <form onSubmit={handleLogin}>
+        <h3>Login</h3>
+        <input
+          placeholder="Username"
+          value={loginUsername}
+          onChange={e => setLoginUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={loginPassword}
+          onChange={e => setLoginPassword(e.target.value)}
+        />
+        <button>Log in!</button>
+      </form>
       <button className="link-btn" onClick={() => props.onFormSwitch('Signup')}>Need an account? Register here.</button>
     </div>
   )
