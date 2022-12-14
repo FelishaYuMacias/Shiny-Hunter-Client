@@ -37,23 +37,18 @@ setStarted(started)
 
   return (
     <div className="card">
+        <h3>{hunt.pokemon.species}</h3>
       <div className='image'>
         <img src={sprite} alt="shiny" />
       </div>
       <div className='text'>
         <h4>Method</h4>
         <p>{hunt.method}</p>
-        <h4>Date Started</h4>
-        <p>{started}</p>
         <h4>Encounters</h4>
         <p>{hunt.counter}</p>
-        <h4>Species</h4>
-        <p>{hunt.pokemon.species}</p>
-        <h4>Level</h4>
-        <p>{hunt.pokemon.level}</p>
-        <h4>Gender</h4>
-        <p>{hunt.pokemon.gender}</p>
         <div>
+        <h4>Date Started</h4>
+        <p>{started}</p>
         <h4>Date Completed</h4>
         <p>{completed}</p>
         </div>
