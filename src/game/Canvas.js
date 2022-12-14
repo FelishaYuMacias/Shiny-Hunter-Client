@@ -22,6 +22,7 @@ const Canvas = ({ width, height }) => {
   const detectKeyDown = (e) => {
     if (e.key === 'w') {
       setY((y) => y - 1)
+      ctx.drawImage(image, 120, 6, 30, 43, x * 32, y * 32 - 8, 30, 42)
     } else if (e.key === 's') {
       setY((y) => y + 1)
     } else if (e.key === 'a') {
@@ -43,11 +44,11 @@ const Canvas = ({ width, height }) => {
     const tick = () => {
       frame++
       gameLoop(frame)
+      console.log('stepping')
       frameId = requestAnimationFrame(tick)
     }
 
     const gameLoop = (frame) => {
-      setAnimX(frame % 96)
     }
 
     tick()
