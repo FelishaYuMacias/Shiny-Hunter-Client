@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
+import PokeApi from '../util/PokeAPI';
 
 const Search = () => {
-  const [sprites, setPokemon] = useState(" ");
+  const [pokemon, setPokemon] = useState(" ");
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("")
   const [loading, setLoading] = useState(false)
@@ -11,7 +12,7 @@ const Search = () => {
   const getPokemon = async () => {
     const toArray = [];
     try {
-      const url = `https://pokeapi.co/api/v2/pokemon/${sprites}`
+      const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
       const res = await axios.get(url)
       toArray.push(res.data)
       setPokemonType(res.data.types[0].type.name)
@@ -21,7 +22,6 @@ const Search = () => {
       console.log(e)
     }
   }
-  
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
   };
@@ -46,14 +46,14 @@ const Search = () => {
       {pokemonData.map((data) => {
         return (
           <div className='container'>
-            {!loading && sprites ? (
+            {!loading && pokemon ? (
                <div>
             </div>
             ): null}
         <div className="nes-container with-title is-centered">
           <span className="nes-text is-primary">
             <h1>{data.species.name}</h1>
-            <img src={data.sprites["front_shiny"]} alt="shiny" />
+            <img src={data.sprites.other.home.front_shiny} alt="shiny" />
             
             <div className='divTable'>
               <div className='divTableBody'>
@@ -73,11 +73,6 @@ const Search = () => {
                   <div className='divTableCell'>
                     {" "}
                     {Math.round(data.weight / 4.3)} lbs
-                  </div>
-                </div>
-                  <div className='divTableRow'>
-                  <div className='divTableCell'>Number of Battle</div>
-                  <div className='divTableCell'>{data.game_indices.length}
                   </div>
                 </div>
               </div>
