@@ -25,6 +25,9 @@ const API = {
   getUser: async (userId) => {
     return await axios.get(`${URL_PREFIX}/api/users/${userId}`).then(res => res.data)
   },
+    getOneHunt: async (huntId) => {
+    return await axios.get(`${URL_PREFIX}/api/hunts/${huntId}`).then(res => res.data)
+  },
   getHunts: async () => {
     return await axios.get(`${URL_PREFIX}/api/hunts`).then(res => res.data)
   },
@@ -46,7 +49,12 @@ const API = {
   },
   editHunt: async (hunt, huntId, token) => {
     return await axios.put(`${URL_PREFIX}/api/hunts/${huntId}`, {
-      hunt,
+      ...hunt,
+      // method: hunt.method,
+      // counter: hunt.counter,
+      // phase: hunt.phase,
+      // game: hunt.game,
+      // dateCompleted: hunt.dateCompleted,
       headers: {
         "Authorization": `Bearer ${token}`
       }

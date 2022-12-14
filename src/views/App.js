@@ -52,8 +52,13 @@ function App() {
             element={<Profile
               isLoggedIn={isLoggedIn}
             />} />
-          <Route path="/updateform"
+          <Route path="/updatemyhunt"
             element={<UpdateHunt
+              isLoggedIn={isLoggedIn}
+            />} />
+          <Route path="/game" element={<Game />} />
+          <Route path="/updatehunt"
+            element={<Huntform
               isLoggedIn={isLoggedIn}
             />} />
           <Route path="/game" element={<Game />} />

@@ -2,7 +2,7 @@ import './Profile.css';
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card';
 import API from '../util/API'
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const Profile = (props) => {
   const navigate = useNavigate()
@@ -21,23 +21,26 @@ const Profile = (props) => {
     })
   };
   const handleUpdate = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     console.log("Update clicked")
     console.log(e.currentTarget.id);
-    navigate('../UpdateHunt')
+    navigate('../updatemyhunt')
     localStorage.setItem('hunt', e.currentTarget.id);
+    localStorage.setItem('huntinfo', e.currentTarget);
     // setIsShown(current => !current);
     // console.log(isShown)
   };
 
   const handleDelete = (e) => {
+    e.preventDefault();
     const user = localStorage.getItem('user')
     const token = user.token
 
     API.deleteHunt(userHunts[e.target.getAttribute('data-buttonid')]._id, token)
       .then(res => {
-        if (res.ok) {
+        if (res) {
           window.location.reload(true)
+          console.log(`hunt id ${userHunts[e.target.getAttribute('data-buttonid')]._id} deleted`)
         }
       })
   };
