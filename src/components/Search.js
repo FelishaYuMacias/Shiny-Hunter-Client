@@ -7,6 +7,7 @@ const Search = () => {
   const [pokemonType, setPokemonType] = useState("")
   const [loading, setLoading] = useState(false)
   
+  
   const getPokemon = async () => {
     const toArray = [];
     try {

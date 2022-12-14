@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Huntform from './Huntform';
 
-function Hunts() {
+function Hunt() {
   const [hunts, setHunts] = useState([]);
 
   const addHuntsItem = (item) => {
@@ -62,4 +62,4 @@ function Hunts() {
   );
 }
 
-export default Hunts;
+export default Hunt;

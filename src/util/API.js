@@ -50,11 +50,6 @@ const API = {
   editHunt: async (hunt, huntId, token) => {
     return await axios.put(`${URL_PREFIX}/api/hunts/${huntId}`, {
       ...hunt,
-      // method: hunt.method,
-      // counter: hunt.counter,
-      // phase: hunt.phase,
-      // game: hunt.game,
-      // dateCompleted: hunt.dateCompleted,
       headers: {
         "Authorization": `Bearer ${token}`
       }

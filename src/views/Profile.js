@@ -2,14 +2,13 @@ import './Profile.css';
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card';
 import API from '../util/API'
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Profile = (props) => {
   const navigate = useNavigate()
 
   const [user, setUser] = useState([])
   const [userHunts, setUserHunts] = useState([])
-  const [thisHunt, setThishunt] = useState()
 
   const fetchUser = async () => {
     const userId = JSON.parse(localStorage.getItem('user')).id
@@ -27,8 +26,6 @@ const Profile = (props) => {
     navigate('../updatemyhunt')
     localStorage.setItem('hunt', e.currentTarget.id);
     localStorage.setItem('huntinfo', e.currentTarget);
-    // setIsShown(current => !current);
-    // console.log(isShown)
   };
 
   const handleDelete = (e) => {
