@@ -13,7 +13,7 @@ export default function UpdateHunt(props) {
 
     const huntId = localStorage.getItem('hunt')
 
-    const [currentHunt, setCurrentHunt] = useState({})
+    const [currentHunt, setCurrentHunt] = useState()
     const [currentMethod, setCurrentMethod] = useState("")
 
     const fetchCurrentHunt  = async () => {
@@ -80,7 +80,7 @@ export default function UpdateHunt(props) {
         console.log(`new game is: ${game}`);
         console.log(`new dateCompleted is: ${dateCompleted}`);
 // console.log (currentHunt)
-// console.log (currentMethod)
+console.log (currentMethod)
         const user = JSON.parse(localStorage.getItem('user'))
         const userId = user.id
         const userToken = user.token
@@ -99,7 +99,6 @@ export default function UpdateHunt(props) {
 
     };
     useEffect(() => {
-        fetchCurrentHunt();
         const thisHunt = {
             method: method,
             counter: count,
@@ -115,6 +114,9 @@ export default function UpdateHunt(props) {
         <>
             <h1>Update Your Hunt</h1>
             <div className='update nes-container'>
+            <div className="render-btn">
+                    <button type="button" className="nes-btn is-success" onClick={fetchCurrentHunt}>Add Current Info</button>
+                </div>
                 <div className="nes-field is-inline updatedMethod">
                     <label htmlFor="name_field">Updated Method</label>
                     <input type="text" id="method_field" className="nes-input" name="method" onChange={handleMethod} value={method} />
