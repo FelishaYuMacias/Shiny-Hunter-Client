@@ -2,43 +2,68 @@ import './UpdateHunt.css';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import API from '../util/API';
-import axios from 'axios'
-// const URL_PREFIX = 'http://localhost:3001'
-const URL_PREFIX = 'https://shiny-hunter-server.herokuapp.com'
+import * as moment from 'moment'
+
 
 export default function UpdateHunt(props) {
+    const current = new Date();
+    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+// console.log(date)
     const navigate = useNavigate();
+
     const huntId = localStorage.getItem('hunt')
 
-    const [method, setMethod] = useState('');
+    const [currentHunt, setCurrentHunt] = useState({})
+    const [currentMethod, setCurrentMethod] = useState("")
+
+    const fetchCurrentHunt  = async () => {
+        API.getOneHunt(huntId).then(res => {
+            const currentHunt = res;
+            setCurrentHunt(currentHunt)
+            const currentMethod = currentHunt.method
+            setMethod(currentMethod)
+            const currentCount = currentHunt.counter
+            setCount(currentCount)
+            const currentPhase = currentHunt.phase
+            setPhase(currentPhase)
+            const currentDate = currentHunt.dateCompleted
+            const currentDateCompleted= moment(currentDate).format('YYYY-MM-DD')
+            setDateCompleted(currentDateCompleted ||date)
+            const currentGame = currentHunt.game
+            setGame(currentGame)
+            
+    })  
+};
+
+    const [method, setMethod] = useState("none");
     const handleMethod = event => {
         const method = event.target.value
         setMethod(method);
         console.log(`method is: ${method}`);
     }
 
-    const [count, setCount] = useState('');
+    const [count, setCount] = useState(0);
     const handleCount = event => {
         const count = event.target.value
         setCount(count);
         console.log(`count is: ${count}`);
     }
 
-    const [phase, setPhase] = useState('');
+    const [phase, setPhase] = useState(0);
     const handlePhase = event => {
         const phase = event.target.value
         setPhase(phase);
         console.log(`phase is: ${phase}`);
     }
 
-    const [game, setGame] = useState('');
+    const [game, setGame] = useState("none");
     const handleGame = event => {
         const game = event.target.value
         setGame(game);
         console.log(`game is: ${game}`);
     }
 
-    const [dateCompleted, setDateCompleted] = useState('');
+    const [dateCompleted, setDateCompleted] = useState("");
     const handleDateCompleted = event => {
         const dateCompleted = event.target.value
         setDateCompleted(dateCompleted);
@@ -54,7 +79,8 @@ export default function UpdateHunt(props) {
         console.log(`new phase is: ${phase}`);
         console.log(`new game is: ${game}`);
         console.log(`new dateCompleted is: ${dateCompleted}`);
-
+// console.log (currentHunt)
+// console.log (currentMethod)
         const user = JSON.parse(localStorage.getItem('user'))
         const userId = user.id
         const userToken = user.token
@@ -66,13 +92,15 @@ export default function UpdateHunt(props) {
             game: game,
             dateCompleted: dateCompleted
         }
-console.log(hunt)
+
+        console.log(hunt)
         API.editHunt(hunt, huntId, userToken)
         navigate('/profile')
-        localStorage.removeItem('currentHunt')
+
     };
     useEffect(() => {
-        const currentHunt = {
+        fetchCurrentHunt();
+        const thisHunt = {
             method: method,
             counter: count,
             phase: phase,
@@ -80,7 +108,7 @@ console.log(hunt)
             dateCompleted: dateCompleted
         }
 
-        localStorage.setItem('currentHunt', JSON.stringify(currentHunt));
+        localStorage.setItem('currentHunt', JSON.stringify(thisHunt));
     })
 
     return (

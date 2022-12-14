@@ -26,6 +26,7 @@ const Profile = (props) => {
     console.log(e.currentTarget.id);
     navigate('../updatemyhunt')
     localStorage.setItem('hunt', e.currentTarget.id);
+    localStorage.setItem('huntinfo', e.currentTarget);
     // setIsShown(current => !current);
     // console.log(isShown)
   };
