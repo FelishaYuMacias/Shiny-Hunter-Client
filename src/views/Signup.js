@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import API from '../util/API'
-import { FormControl, FormHelperText, FormErrorMessage} from '@chakra-ui/react'
 
 const Login = (props) => {
-  const [signupUsername, setSignupUsername] = useState("")
-  const [signupPassword, setSignupPassword] = useState("")
-  const handleInputChange = (e) => setSignupUsername(e.target.value)
-
-  const isError = signupUsername === ''
+  const [signupUsername, setSignupUsername] = useState(null)
+  const [signupPassword, setSignupPassword] = useState(null)
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -51,28 +47,21 @@ const Login = (props) => {
   return (
     <div>
 
-      <FormControl isInValid={isError} onSubmit={handleSignup}>
+      <form onSubmit={handleSignup}>
         <h3>Signup</h3>
         <input
           placeholder="Username"
           value={signupUsername}
-          onChange={handleInputChange}
+          onChange={e => setSignupUsername(e.target.value)}
         />
-        {!isError ? (
-          <FormHelperText>
-          Enter the email you'd like to receive the newsletter on.
-        </FormHelperText>
-      ) : (
-        <FormErrorMessage>Email is required.</FormErrorMessage>
-        )}
         <input
           type="password"
           placeholder="Password"
           value={signupPassword}
           onChange={e => setSignupPassword(e.target.value)}
         />
-      </FormControl>
         <button>Signup!</button>
+      </form>
       <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Have a Account? Login here.</button>
 
     </div>
