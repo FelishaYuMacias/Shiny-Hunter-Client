@@ -7,7 +7,7 @@ import * as moment from 'moment'
 
 export default function UpdateHunt(props) {
     const current = new Date();
-    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()+1}`;
 // console.log(date)
     const navigate = useNavigate();
 
@@ -39,48 +39,48 @@ export default function UpdateHunt(props) {
     const handleMethod = event => {
         const method = event.target.value
         setMethod(method);
-        console.log(`method is: ${method}`);
+        // console.log(`method is: ${method}`);
     }
 
     const [count, setCount] = useState(0);
     const handleCount = event => {
         const count = event.target.value
         setCount(count);
-        console.log(`count is: ${count}`);
+        // console.log(`count is: ${count}`);
     }
 
     const [phase, setPhase] = useState(0);
     const handlePhase = event => {
         const phase = event.target.value
         setPhase(phase);
-        console.log(`phase is: ${phase}`);
+        // console.log(`phase is: ${phase}`);
     }
 
     const [game, setGame] = useState("none");
     const handleGame = event => {
         const game = event.target.value
         setGame(game);
-        console.log(`game is: ${game}`);
+        // console.log(`game is: ${game}`);
     }
 
     const [dateCompleted, setDateCompleted] = useState("");
     const handleDateCompleted = event => {
         const dateCompleted = event.target.value
         setDateCompleted(dateCompleted);
-        console.log(`dateCompleted is: ${dateCompleted}`);
+        // console.log(`dateCompleted is: ${dateCompleted}`);
     }
 
     const updateHunt = (e) => {
         e.preventDefault();
-        console.log("Submit clicked")
-        console.log(`hunt id is ${huntId}`)
-        console.log('new method is:', method);
-        console.log(`new count is: ${count}`);
-        console.log(`new phase is: ${phase}`);
-        console.log(`new game is: ${game}`);
-        console.log(`new dateCompleted is: ${dateCompleted}`);
+        // console.log("Submit clicked")
+        // console.log(`hunt id is ${huntId}`)
+        // console.log('new method is:', method);
+        // console.log(`new count is: ${count}`);
+        // console.log(`new phase is: ${phase}`);
+        // console.log(`new game is: ${game}`);
+        // console.log(`new dateCompleted is: ${dateCompleted}`);
 // console.log (currentHunt)
-console.log (currentMethod)
+// console.log (currentMethod)
         const user = JSON.parse(localStorage.getItem('user'))
         const userId = user.id
         const userToken = user.token
@@ -93,9 +93,10 @@ console.log (currentMethod)
             dateCompleted: dateCompleted
         }
 
-        console.log(hunt)
+        // console.log(hunt)
         API.editHunt(hunt, huntId, userToken)
         navigate('/profile')
+        // window.location('/profile')
 
     };
     useEffect(() => {
