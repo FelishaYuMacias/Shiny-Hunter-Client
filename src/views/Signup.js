@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import API from '../util/API'
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-} from '@chakra-ui/react'
+import { FormControl, FormHelperText, FormErrorMessage} from '@chakra-ui/react'
 
-
-const Signup = (props) => {
+const Login = (props) => {
   const [signupUsername, setSignupUsername] = useState("")
   const [signupPassword, setSignupPassword] = useState("")
-
   const handleInputChange = (e) => setSignupUsername(e.target.value)
 
-  const isError = signupUsername === ""
+  const isError = signupUsername === ''
+
   const navigate = useNavigate();
   useEffect(() => {
     if (props.isLoggedIn) {
@@ -55,36 +49,34 @@ const Signup = (props) => {
   }
 
   return (
-
-
     <div>
 
-      <FormControl isInvalid={isError}
-      onSubmit={handleSignup}>
+      <FormControl isInValid={isError} onSubmit={handleSignup}>
         <h3>Signup</h3>
         <input
           placeholder="Username"
           value={signupUsername}
           onChange={handleInputChange}
-          />
-        <input
-          type="password"
-          placeholder="Password"
-          value={signupPassword}
-          onChange={e => setSignupPassword(e.target.value)}/>
-          {!isError ? (
-        <FormHelperText>
+        />
+        {!isError ? (
+          <FormHelperText>
           Enter the email you'd like to receive the newsletter on.
         </FormHelperText>
       ) : (
         <FormErrorMessage>Email is required.</FormErrorMessage>
-      )}
-        <button type="button" class="nes-btn is-error">Signup!</button>
+        )}
+        <input
+          type="password"
+          placeholder="Password"
+          value={signupPassword}
+          onChange={e => setSignupPassword(e.target.value)}
+        />
       </FormControl>
+        <button>Signup!</button>
       <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Have a Account? Login here.</button>
 
     </div>
   )
 }
 
-export default Signup
+export default Login
