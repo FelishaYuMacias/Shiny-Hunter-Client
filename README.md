@@ -72,6 +72,14 @@ https://shiny-hunter-server.herokuapp.com/
 ### Server Repo
 https://github.com/FelishaYuMacias/Shiny-Hunter-Server
 
+### Deployed Game
+
+https://tkmarsten.github.io/shiny-hunter-game/
+
+### Game Repo
+
+https://github.com/tkmarsten/shiny-hunter-game
+
 
 ## Contact
     For any questions or concerns, contact us by my email:
