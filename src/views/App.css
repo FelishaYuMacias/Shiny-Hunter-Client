@@ -3,61 +3,32 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: wheat;
-  
 }
 
 .App {
   text-align: center;
 }
 
+nav {
+  padding: 1rem;
+}
+
 nav > * {
   margin: 0 20px;
 }
-.divTable {
-  margin-top: 50px;
-  display: flex;
-}
 
-
-
-.divTable {
-  display: table;
-  max-width: 20em;
-  float: right;
-  display: flex;
-  align-items: center;
-}
-
-.divTableRow {
+tr {
   display: table-row;
 }
 
-.divTableHeading {
-  background-color: #eee;
-  display: table-header-group;
-  font-weight: bold;
-}
-
-.divTableCell,
-.divTableHead {
-  border: 1px solid #999999;
-  display: table-cell;
-  padding: 3px 10px;
-}
-
-.divTableFoot {
-  background-color: #eee;
-  display: table-footer-group;
-  font-weight: bold;
-}
-
-.divTableBody {
+tbody {
   display: table-row-group;
 }
 
-.divTableCell:nth-child(1n) {
+td:nth-child(1n) {
   background-color: gainsboro;
 }
 
@@ -94,7 +65,6 @@ button {
 h1 {
   margin: 0px;
 }
-
 
 .form {
   margin: auto;
@@ -136,24 +106,17 @@ h3 {
 }
 
 .nes-container {
-  position:absolute;
+  position: absolute;
   border: none;
   text-decoration: none;
 }
 
 .nes-table-responsive {
-  margin-left: 45%;
-  margin-top: 2%;
+  margin: 0 !important;
   text-align: left;
 }
 
-.nes-table-responsive .Image {
- align-items: right;
-}
-
-.nes-container is-rounded
-
-.card {
+.nes-container is-rounded .card {
   background-color: #eee;
   margin: 0px auto;
   max-width: 800px;
@@ -163,17 +126,16 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   box-shadow: 0 0 3px black;
-} 
+}
 
 .column {
   float: left;
   margin: 5px;
   display: flex;
   justify-content: space-evenly;
-  
 }
 
-.row{
+.row {
   display: table;
   content: "";
   align-items: center;
@@ -185,6 +147,15 @@ h6 {
   font-size: 25px;
   margin: auto;
   display: list-item;
+}
+
+.nes-input,
+.nes-select {
+  max-width: 100% !important;
+}
+
+.nes-input.search {
+  width: 50%;
 }
 
 @media screen and (max-width: 600px) {
