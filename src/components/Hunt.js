@@ -20,7 +20,7 @@ function Hunt() {
   };
 
   const completeHuntsItem = (id) => {
-   
+
     let updatedHunts = hunts.map((item) => {
       if (item.id === id) {
         item.isComplete = !item.isComplete;
@@ -52,12 +52,12 @@ function Hunt() {
     <div>
       <h1>Please Add Your Hunt Here!</h1>
       <Huntform onSubmit={addHuntsItem} />
-      <Hunts
+      <Hunt
         hunts={hunts}
         completeHuntsItem={completeHuntsItem}
         removeHuntsItem={removeHuntsItem}
         editHuntsItem={editHuntsItem}
-      ></Hunts>
+      ></Hunt>
     </div>
   );
 }
